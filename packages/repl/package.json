@@ -2,11 +2,10 @@
   "name": "@zet/repl",
   "version": "0.0.1",
   "license": "MIT",
-  "type": "module",
   "main": "index.js",
   "module": "index.ts",
   "scripts": {
-    "start": "node --loader ts-node/esm --experimental-specifier-resolution=node --experimental-top-level-await --no-warnings index.ts --transpile-only -r tsconfig-paths/register index.ts",
+    "start": "yarn ts-node --transpile-only -r tsconfig-paths/register index.ts",
     "startComment": [
       "see https://github.com/TypeStrong/ts-node/issues/1007"
     ]

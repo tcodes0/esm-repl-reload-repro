@@ -66,38 +66,36 @@ const reload = function (
    */
   console.log({ 'decache reloading module': modulePath })
   decache(modulePath);
-  /**
-   * reload module, this may throw.
-   * It normally throws because you didn't finish typing and the code reloaded
-   * leaving it with broken syntax
-   */
-  // console.log({ reload: { contextKey, modulePath } })
-  import(modulePath)
-    .then((module) => {
-      repl.context[contextKey] = module;
-    })
-    .catch((error) => {
-      /**
-       * set the lastReload object to fail state
-       * capture error to inspection if desired
-       * "why isn't my code reloading"?
-       * maybe it is, just has an error!
-       */
-      lastReload.ok = false;
-      lastReload.error = error;
-    });
-  /**
-   * kindaof a hack. Some use cases use newline, other don't.
-   * nice refactor opportunity
-   */
-  if (config.newline) {
-    repl.write("\n");
+  try {
+    /**
+     * reload module, this may throw.
+     * It normally throws because you didn't finish typing and the code reloaded
+     * leaving it with broken syntax
+     */
+    // console.log({ reload: { contextKey, modulePath } })
+    repl.context[contextKey] = require(modulePath);
+    /**
+     * kindaof a hack. Some use cases use newline, other don't.
+     * nice refactor opportunity
+     */
+    if (config.newline) {
+      repl.write("\n");
+    }
+    /**
+     * set the lastRelaod object to success state
+     */
+    lastReload.ok = true;
+    lastReload.error = null;
+  } catch (error) {
+    /**
+     * set the lastReload object to fail state
+     * capture error to inspection if desired
+     * "why isn't my code reloading"?
+     * maybe it is, just has an error!
+     */
+    lastReload.ok = false;
+    lastReload.error = error;
   }
-  /**
-   * set the lastRelaod object to success state
-   */
-  lastReload.ok = true;
-  lastReload.error = null;
 };
 
 const greetings = ["Welcome to the REPL", ".help \t\t see commands"];
