@@ -1,0 +1,9 @@
+{
+  "name": "@zet/stuff",
+  "version": "0.0.1",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "module": "index.ts",
+  "dependencies": {}
+}

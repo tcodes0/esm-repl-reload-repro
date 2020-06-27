@@ -1,0 +1,42 @@
+{
+  "name": "zet",
+  "version": "0.0.1",
+  "private": true,
+  "description": "repro",
+  "repository": "git@github.com:Thomazella/zet.git",
+  "license": "MIT",
+  "author": "Raphael Thomazella <thomazella9@gmail.com>",
+  "type": "module",
+  "main": "build/index.js",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": []
+  },
+  "scripts": {
+    "repl": "yarn workspace @zet/repl start"
+  },
+  "dependencies": {
+    "typescript": "3.9.5"
+  },
+  "devDependencies": {
+    "@types/jest": "25.2.3",
+    "@types/node": "14.0.11",
+    "@types/ws": "7.2.5",
+    "@typescript-eslint/eslint-plugin": "3.1.0",
+    "@typescript-eslint/parser": "3.1.0",
+    "babel-jest": "26.0.1",
+    "eslint": "7.2.0",
+    "eslint-plugin-import": "2.21.2",
+    "eslint-plugin-jest": "23.13.2",
+    "husky": "4.2.5",
+    "jest": "26.0.1",
+    "json5": "2.1.3",
+    "lint-staged": "10.2.9",
+    "prettier": "2.0.5",
+    "rimraf": "3.0.2",
+    "sort-package-json": "1.44.0",
+    "ts-jest": "26.1.0"
+  }
+}
